@@ -2,7 +2,7 @@
 // refer to comp_chem.html for the minimal code needed
 
 // Create the header element
-function createHeader() {
+export function createHeader() {
   var header = document.createElement("header");
 
   // Create the top div, and fill it
@@ -26,7 +26,7 @@ function createHeader() {
 }
 
 // Create the navigation element
-function createNavigation() {
+export function createNavigation() {
   var nav = document.createElement("nav");
   nav.classList.add("topnav");
 
@@ -72,32 +72,3 @@ function createFooter() {
 
   return footer;
 }
-
-// Check if the current page is "index.html" and redirect to "about.html"
-if (window.location.pathname.includes("index.html")) {
-  window.location.href = "about.html";
-}
-
-// Get the body element
-var bodyElement = document.body;
-
-// Generate the header, navigation, and footer
-var header = createHeader();
-var navigation = createNavigation();
-var footer = createFooter();
-
-// Append the generated elements to the body element
-bodyElement.appendChild(header);
-bodyElement.appendChild(navigation);
-
-// Create the main element
-var mainElement = document.createElement("main");
-
-// Append the main element to the body
-// and place <article> inside <main>
-bodyElement.appendChild(mainElement);
-var articleElement = document.querySelector("article");
-mainElement.appendChild(articleElement);
-
-// Append the footer element to the body
-bodyElement.appendChild(footer);
