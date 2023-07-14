@@ -5,9 +5,9 @@ export function createNavigation() {
     nav.classList.add("topnav");
 
     // Create the anchor elements for navigation
-    var aboutLink = createNavLink("About", "pages/about.html", "internal-nav");
-    var researchLink = createNavLink("Research", "pages/research.html", "internal-nav");
-    var blogsLink = createNavLink("Blogs", "pages/blogs.html", "internal-nav");
+    var aboutLink = createNavLink("About", "about.html", "internal-nav");
+    var researchLink = createNavLink("Research", "research.html", "internal-nav");
+    var blogsLink = createNavLink("Blogs", "blogs.html", "internal-nav");
 
     // add first-item stlying to first nav
     aboutLink.classList.add('first-item')
