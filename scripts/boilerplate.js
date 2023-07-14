@@ -60,7 +60,7 @@ function createNavLink(displayText, url, className) {
 }
 
 // Create the footer element
-function createFooter() {
+export function createFooter() {
   var footer = document.createElement("footer");
 
   // Create the footer paragraph
