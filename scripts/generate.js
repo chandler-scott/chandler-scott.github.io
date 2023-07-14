@@ -1,9 +1,9 @@
-
-import { createHeader, createFooter, createNavigation } from './boilerplate.js';
-
+import { createHeader } from './components/header.js';
+import { createFooter } from './components/footer.js';
+import { createNavigation } from './components/topnav.js';
 
 // Check if the current page is "index.html" and redirect to "about.html"
-if (window.location.pathname.includes("index.html")) {
+if (window.location.pathname === "/" || window.location.pathname === "/index.html") {
     window.location.href = "pages/about.html";
 }
 
