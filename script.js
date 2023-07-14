@@ -10,12 +10,12 @@ function createHeader() {
   titleIntroDiv.classList.add("title-intro");
 
   var h1 = document.createElement("h1");
-  h1.textContent = "Frank Hagelberg";
+  h1.textContent = "Chandler Scott";
 
   var h3 = document.createElement("h3");
-  h3.textContent = "Department of Physics and Astronomy,\n" +
+  h3.textContent = "Graduate Student,\n" +
                    "East Tennessee State University,\n" +
-                   "Research in Computational Materials Science";
+                   "Applied Computer Science";
 
   titleIntroDiv.appendChild(h1);
   titleIntroDiv.appendChild(h3);
@@ -33,9 +33,7 @@ function createNavigation() {
   // Create the anchor elements for navigation
   var aboutLink = createNavLink("About", "about.html", "internal-nav");
   var researchLink = createNavLink("Research", "research.html", "internal-nav");
-  var publicationsLink = createNavLink("Publications", "publications.html", "internal-nav");
-  var coursesLink = createNavLink("Courses", "courses.html", "internal-nav");
-  var cardsLink = createNavLink("CaRDS", "cards.html", "internal-nav");
+  var blogsLink = createNavLink("Blogs", "blogs.html", "internal-nav");
 
   // add first-item stlying to first nav
   aboutLink.classList.add('first-item')
@@ -43,9 +41,7 @@ function createNavigation() {
   // Append the anchor elements to the nav element
   nav.appendChild(aboutLink);
   nav.appendChild(researchLink);
-  nav.appendChild(publicationsLink);
-  nav.appendChild(coursesLink);
-  nav.appendChild(cardsLink);
+  nav.appendChild(blogsLink);
 
   return nav;
 }
@@ -69,10 +65,7 @@ function createFooter() {
 
   // Create the footer paragraph
   var footerParagraph = document.createElement("p");
-  footerParagraph.innerHTML = "Frank Hagelberg<br/>" +
-                              "Department of Physics and Astronomy,<br/>" +
-                              "East Tennessee State University,<br/>" +
-                              "Research in Computational Materials Science";
+  footerParagraph.innerHTML = "©Chandler Scott Development";
 
   // Append the footer paragraph to the footer element
   footer.appendChild(footerParagraph);
@@ -80,8 +73,8 @@ function createFooter() {
   return footer;
 }
 
-// Check if the current page is "comp_chem.html" and redirect to "about.html"
-if (window.location.pathname.includes("comp_chem.html")) {
+// Check if the current page is "index.html" and redirect to "about.html"
+if (window.location.pathname.includes("index.html")) {
   window.location.href = "about.html";
 }
 

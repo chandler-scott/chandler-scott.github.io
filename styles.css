@@ -5,7 +5,7 @@ html, body {
   }
 
 body {
-    background: linear-gradient(to bottom, #150040, #300080, #150040);
+    background: linear-gradient(to bottom, #000000, #404040, #000000);
     color: #fff;
     margin: 0;
     display: flex;
