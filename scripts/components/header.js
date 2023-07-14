@@ -10,9 +10,10 @@ export function createHeader() {
     h1.textContent = "Chandler Scott";
   
     var h3 = document.createElement("h3");
-    h3.textContent = "Graduate Student,<br/>" +
-                     "East Tennessee State University,<br/>" +
+    h3.textContent = "Graduate Student,\n" +
+                     "East Tennessee State University,\n" +
                      "Applied Computer Science";
+    
   
     titleIntroDiv.appendChild(h1);
     titleIntroDiv.appendChild(h3);
