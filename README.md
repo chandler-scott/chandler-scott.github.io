@@ -1,1 +1,1 @@
-# chandler-scott.github.io
+# chandler scott's website
