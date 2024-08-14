@@ -18,21 +18,25 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Your awesome title
-email: your-email@example.com
+title: Terminal Thoughts
+email: chandler.scott.mail@gmail.com 
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  Explore in-depth articles on computer science, Linux, networking, 
+  software development, and cybersecurity. Terminal Thoughts offers 
+  practical tutorials, insights, and reflections for tech enthusiasts 
+  and professionals alike. Stay informed and enhance your skills as 
+  we delve into the latest trends and tools in the tech world.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
+github_username: chandler-scott 
 
 # Build settings
 theme: minima
 plugins:
   - jekyll-feed
+
+header_pages:
+  - about.md
 
 # Exclude from processing.
 # The following items will not be processed, by default.
