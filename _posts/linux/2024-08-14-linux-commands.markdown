@@ -29,17 +29,17 @@ The `cat` program has several useful options, many of which help visualize text 
 Let’s create a test file using `cat` as a primitive word processor. We’ll start by entering the `cat` command (with output redirected to a file) and type our text. After finishing the line, we’ll press `ENTER` to properly end it, followed by `CTRL-D` to signal the end of the file. In this example, we’ll enter a leading tab character and add some trailing spaces:
 
 ```bash
-chandler@linux:~$ cat > foo.text
+chandler@linux: ~$ cat > foo.text
     The quick brown fox jumped over the lazy dog.
-chandler@linux:~$
+chandler@linux: ~$
 ```
 
 Next, we use `cat` with the `-A` option to display the text:
 
 ```
-chandler@linux:~$ cat -A foo.txt
+chandler@linux: ~$ cat -A foo.txt
 ^IThe quick brown fox jumped over the lazy dog.     $
-chandler@linux:~$
+chandler@linux: ~$
 ```
 
 As seen in the results, the tab character in our text is represented by `^I`. This notation indicates `CTRL-I`, which corresponds to a tab character. The `$` at the end of the line marks the true end of the line, highlighting the trailing spaces.
@@ -47,12 +47,12 @@ As seen in the results, the tab character in our text is represented by `^I`. Th
 The `cat` program also offers options to modify text. Two of the most prominent are `-n`, which numbers lines, and `-s`, which suppresses multiple blank lines. For example:
 
 ```bash
-chandler@linux:~$ cat > foo.txt
+chandler@linux: ~$ cat > foo.txt
 The quick brown fox
 
 
 jumped over the lazy dog.
-chandler@linux:~$ cat -ns foo.txt
+chandler@linux: ~$ cat -ns foo.txt
      1      The quick brown fox
      2
      3      jumped over the lazy dog.
