@@ -5,8 +5,12 @@ date:   2024-08-14 15:34:43 -0400
 category: "linux basics"
 ---
 
-### Text Processing 
+# Table of Contents
+- [Text Processing](#text-processing)
+    - [cat](#cat)
+    - [sort](#sort)
 
+### [Text Processing](#text-processing) 
 `cat`: Concatenate files and print on the standard output\
 `sort`: Sort lines of text files\
 `uniq`: Report or omit repeated lines\
@@ -22,7 +26,7 @@ category: "linux basics"
 
 Many people write documents using plain text formats. While it is easy to see how a small text file could be useful for simple notes, it is also possible to write large documents in text format. One popular approach is to write a large document in text format and them embed a markup language to describe the formatting of the finished document. 
 
-#### cat
+#### [cat](#cat)
 
 The `cat` program has several useful options, many of which help visualize text content more effectively. For example, the `-A` option displays non-printing characters in the text. This is particularly handy when you want to check for control characters embedded in otherwise visible text, such as tab characters and carriage returns.
 
@@ -59,4 +63,4 @@ chandler@linux: ~$ cat -ns foo.txt
 ```
 In this example, we create a new version of our `foo.txt` file, containing two lines of text separated by two blank lines. After processing with `cat` using the `-ns` options, the extra blank line is removed, and the remaining lines are numbered.
 
-#### Sort
+#### [Sort](#sort) 
