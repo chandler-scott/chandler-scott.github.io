@@ -19,7 +19,7 @@ Jekyll is a beginner-friendly, static site generator that transforms plain text 
 To create a new site run:
 
 ```bash
-    jekyll new <PROJNAME> --options
+$ jekyll new <PROJNAME> --options
 ```
 Running the above command will generate the following file structure:
 
@@ -36,7 +36,7 @@ my-jekyll-site/
 
 To serve the site locally, run:
 ```bash
-   bundle exec jekyll serve 
+$ bundle exec jekyll serve 
 ```
 
 

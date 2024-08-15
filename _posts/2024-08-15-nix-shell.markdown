@@ -1,0 +1,198 @@
+---
+layout: post
+title:  "nix-shell - Package Dependency Manager"
+date:   2024-08-15 15:34:43 -0400
+category: "nix"
+---
+
+# Table of Contents
+- [Overview](#overview)
+- [Installing Nix](#installing-nix)
+- [Verify the Installation](#verify-the-installation) 
+- [Basic Usage](#basic-usage)
+  - [Creating a Simple shell.nix File](#creating-a-simple-shellnix-file)
+  - [Entering the Shell](#entering-the-shell)
+  - [Running Commands in the shell](#running-commands-in-the-shell)
+  - [Exiting the Shell](#exiting-the-shell)
+- [Understanding the Nix Expression File](#understanding-the-nix-expression-file)
+  - [Anatomy of a Nix File](#anatomy-of-a-nix-file)
+  - [Basic Structure](#basic-structure)
+  - [Key Components](#key-components)
+  - [Defining Dependencies](#defining-dependencies)
+  - [Customizing the Shell Environment](#customizing-the-shell-environment)
+
+##  Overview
+`nix-shell` is a powerful package dependency manager in the Nix ecosystem that allows developers to create reproducible and isolated development environments. By specifying dependencies in a shell script, `nix-shell` ensures that the environment remains consistent across different systems. This makes it particularly useful for managing complex projects with various dependencies.
+
+When you run `nix-shell`, it reads from a Nix expression file (like `default.nix` or `shell.nix`), setting up an environment where all the specified dependencies are available. This ensures that your project’s environment is always the same, regardless of the underlying system.
+
+Key Features:
+- **Reproducibility:** Ensures the same environment can be set up on any machine.
+- **Isolation:** Keeps your development environment separate from the global environment, avoiding conflicts.
+- **Flexibility:** Supports a wide range of programming languages and tools, making it suitable for diverse projects.
+
+## Installing Nix
+Before you can use `nix-shell`, you need to have Nix installed on your system. Follow these steps to install Nix:
+
+To install Nix on linux, run the following command in your terminal:
+
+Multi-user installion (recommended).
+```bash
+$ sh <(curl -L https://nixos.org/nix/install) --daemon
+```
+
+Single-user installation
+```bash
+$ sh <(curl -L https://nixos.org/nix/install) --no-daemon
+```
+
+For other operating systems, please refer to the [Nix download page](https://nixos.org/download/).
+
+### Verify the Installation
+To ensure that Nix was installed correctly, run:
+
+```bash
+nix --version
+```
+
+You should see the version number of Nix displayed, indicating a successful installation.
+
+## Basic Usage
+Once Nix is installed, you can start using `nix-shell` to create isolated development environments. Let’s walk through a simple example.
+
+### Creating a Simple shell.nix File
+Create a directory for your project, then navigate into it:
+
+```bash
+$ mkdir my-dotnet-project
+$ cd my-dotnet-project
+```
+
+Inside this directory, create a file named shell.nix with the following content:
+```nix
+{ pkgs ? import <nixpkgs> {} }:
+
+pkgs.mkShell {
+  buildInputs = [
+    pkgs.git
+    pkgs.dotnet-sdk_8
+  ];
+}
+```
+
+This Nix expression defines a shell environment that include Git and the .NET 8 SDK. This allows you to work in a consistent environment tailored to your project's needs.
+
+### Entering the Shell
+To enter the environment defined by shell.nix, simply run:
+
+```bash
+$ nix-shell
+```
+
+You’ll now be in a shell where Git and the .NET 8 SDK are available, even if they’re not installed globally on your system. This allows you to work in a consistent environment tailored to your project’s needs.
+
+You can now do .NET development things, e.g., create and run a console application.
+
+```bash
+$ dotnet new console --name ConsoleApplication
+$ dotnet run --project ConsoleApplication
+Hello, World!
+```
+
+The first command initializes a new .NET console application called `ConsoleApplication`, while the second command runs the application. Since the required dependencies (like the .NET SDK) are available within the Nix shell, these commands will execute seamlessly, even if .NET is not installed globally on your system.
+
+### Exiting the Shell
+When you’re done working in the environment, you can exit the shell by typing:
+
+```bash
+$ exit
+```
+
+This will return you to your normal terminal environment.
+
+## Understanding the Nix Expression File
+In this chapter, we'll delve into the structure and usage of the Nix expression file, which is the heart of `nix-shell`. We'll explore how to define dependencies, customize your environment, and extend the basic shell setup.
+
+### Anatomy of a Nix File
+The Nix expression file (`shell.nix` or `default.nix`) is where you define the environment that `nix-shell` will create. This file is written in the Nix language, which is a purely functional language designed for package management.
+
+### Basic Structure
+Here's a simple example of a `shell.nix` file:
+
+```nix
+{ pkgs ? import <nixpkgs> {} }:
+pkgs.mkShell {
+  buildInputs = [
+    pkgs.git
+    pkgs.dotnet-sdk_8
+  ];
+}
+```
+
+- `{ pkgs ? import <nixpkgs> {} }:`: This line imports the Nix package collection (`nixpkgs`) and makes it available as `pkgs`. The `?` operator provides a default value, ensuring that nixpkgs is imported even if no arguments are passed.
+- `pkgs.mkShell { ... }:`: This is the main function that creates the shell environment. \  
+The `{ ... }` block contains the configuration for the environment.
+
+### Key Components
+- `buildInputs`: This attribute lists the packages that should be included in the environment. In our example, it includes Git and the .NET 8 SDK.
+- `pkgs`: This is a reference to the Nix package collection, which contains thousands of packages that can be included in your environment. Search for Nix packages [here](https://search.nixos.org/packages).
+
+### Defining Dependencies
+Dependencies are the core of your `nix-shell` environment. By specifying them in the `buildInputs` attribute, you ensure that all necessary tools and libraries are available when you enter the shell.
+
+#### Example: Adding More Dependencies
+Let's say you want to add Node.js and Docker to your environment. You can do so by updating your `buildInputs` like this:
+
+```nix
+{ pkgs ? import <nixpkgs> {} }:
+pkgs.mkShell {
+  buildInputs = [
+    pkgs.git
+    pkgs.dotnet-sdk_8
+    pkgs.nodejs
+    pkgs.docker
+  ];
+}
+```
+
+When you run nix-shell, these tools will be available in your environment.
+
+### Customizing the Shell Environment
+Beyond dependencies, you can customize various aspects of your shell environment, such as setting environment variables or creating shell aliases.
+
+#### Setting Environment Variables
+You can set environment variables using the `shellHook` attribute, which runs commands when the shell starts. For example, to set the `PROJECT_ROOT` variable:
+
+```nix
+{ pkgs ? import <nixpkgs> {} }:
+pkgs.mkShell {
+  buildInputs = [
+    pkgs.python3
+  ];
+
+  shellHook = ''
+    export PROJECT_ROOT=$(pwd)
+  '';
+}
+```
+
+#### Creating shell aliases
+You can also define aliases for commonly used commands within the `shellHook`:
+
+```nix
+{ pkgs ? import <nixpkgs> {} }:
+pkgs.mkShell {
+  buildInputs = [
+    pkgs.git
+  ];
+
+  shellHook = ''
+    alias gs="git status"
+    alias ga="git add ."
+  '';
+}
+```
+
+These aliases will be available whenever you enter the shell.
+
+

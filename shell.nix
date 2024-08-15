@@ -15,10 +15,18 @@ pkgs.mkShell {
     # Install the jekyll and bundler gems
     gem install jekyll bundler --no-document
 
-    bundle init
-    bundle add jekyll
+    if [ ! -r Gemfile ]; then
+      bundle init
+      bundle add jekyll
+    fi
 
+    # set aliases
     alias jekyll='bundle exec jekyll'
+    alias new='jekyll new'
+    alias serve='jekyll serve'
+
+    # echo stdin
+    echo "INFO: nix-shell ready for jekyll development."
   '';
 }
 
