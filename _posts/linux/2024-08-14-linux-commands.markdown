@@ -23,9 +23,10 @@ category: "linux basics"
 Many people write documents using plain text formats. While it is easy to see how a small text file could be useful for simple notes, it is also possible to write large documents in text format. One popular approach is to write a large document in text format and them embed a markup language to describe the formatting of the finished document. 
 
 #### cat
-The `cat` program has a number of interesting options. Many of them aeused to help better visualize text content. One example is the `-A` option, which is used to display non-printing characters in the text. Sometimes, we want to know whether control characters are embedded in our otherwise visible text. The most common of these are tab characters and carriage returns.
 
-Let's create a test file using `cat` as a primitive word processor. To do this, we'll enter the `cat` command (along with specifying a file for redirected output) and type our text, followed by `ENTER` to properly end the line and then `CTRL-D` to indicate to `cat` that we have reached end of file. IN this example. we enter a leading tab character and follow the line with some trailing spaces:
+The `cat` program has several useful options, many of which help visualize text content more effectively. For example, the `-A` option displays non-printing characters in the text. This is particularly handy when you want to check for control characters embedded in otherwise visible text, such as tab characters and carriage returns.
+
+Let’s create a test file using `cat` as a primitive word processor. We’ll start by entering the `cat` command (with output redirected to a file) and type our text. After finishing the line, we’ll press `ENTER` to properly end it, followed by `CTRL-D` to signal the end of the file. In this example, we’ll enter a leading tab character and add some trailing spaces:
 
 ```bash
 chandler@linux:~$ cat > foo.text
@@ -41,9 +42,9 @@ chandler@linux:~$ cat -A foo.txt
 chandler@linux:~$
 ```
 
-As you can see in the results, the tab character in our text is represented by `^I`. This is a common notation that means `CTRL-I`, which is the same as a tab character. We also see the `$` at the true end of the line, indicating the trailing spaces.
+As seen in the results, the tab character in our text is represented by `^I`. This notation indicates `CTRL-I`, which corresponds to a tab character. The `$` at the end of the line marks the true end of the line, highlighting the trailing spaces.
 
-`cat` also has options that are used to modify text. The two most prominent are `-n`, which numbers lines, and `-s` which supresses the output of multiple blank lines. For example,
+The `cat` program also offers options to modify text. Two of the most prominent are `-n`, which numbers lines, and `-s`, which suppresses multiple blank lines. For example:
 
 ```bash
 chandler@linux:~$ cat > foo.txt
@@ -56,7 +57,6 @@ chandler@linux:~$ cat -ns foo.txt
      2
      3      jumped over the lazy dog.
 ```
-
-Here, we create a new version of our foo.txt file, which contains two lines of text separated by two blank lines. After processing by `cat` and the `-ns` options, the extra blank line is removed and the remaining liens are numbered.
+In this example, we create a new version of our `foo.txt` file, containing two lines of text separated by two blank lines. After processing with `cat` using the `-ns` options, the extra blank line is removed, and the remaining lines are numbered.
 
 #### Sort
