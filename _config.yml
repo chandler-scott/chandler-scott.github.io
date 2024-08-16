@@ -41,7 +41,7 @@ header_pages:
   - _pages/topics.markdown
   - _pages/about.markdown
 
-permalink: /:slugified_categories/:title
+permalink: /:categories/:title
 
 # Exclude from processing.
 # The following items will not be processed, by default.
