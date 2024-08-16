@@ -35,8 +35,13 @@ theme: minima
 plugins:
   - jekyll-feed
 
+include: 
+  - _pages
 header_pages:
-  - about.md
+  - _pages/topics.markdown
+  - _pages/about.markdown
+
+permalink: /:slugified_categories/:title
 
 # Exclude from processing.
 # The following items will not be processed, by default.

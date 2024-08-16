@@ -7,9 +7,6 @@ layout: default
     <h1 class="page-heading">{{ page.title }}</h1>
   {% endif %}
 
-  <div class="search-bar">
-    <input type="text" id="search-input" placeholder="Search posts...">
-  </div>
 
   <ul class="post-list">
     {% for post in site.posts %}
@@ -29,56 +26,4 @@ layout: default
 
   <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
 </div>
-
-<style>
-  .home {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  .page-heading {
-    font-size: 2.5rem;
-    text-align: center;
-    margin-bottom: 1.5rem;
-    color: #333;
-  }
-  .search-bar {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-  #search-input {
-    width: 100%;
-    max-width: 600px;
-    padding: 10px;
-    font-size: 1.2rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  .post-list {
-    list-style: none;
-    padding: 0;
-  }
-  .post-list li {
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #ddd;
-  }
-  .post-meta {
-    color: #666;
-    font-size: 0.9rem;
-  }
-  .post-link {
-    color: #007acc;
-    text-decoration: none;
-    font-size: 1.5rem;
-  }
-  .post-link:hover {
-    text-decoration: underline;
-  }
-  .rss-subscribe {
-    text-align: center;
-    margin-top: 2rem;
-  }
-</style>
 

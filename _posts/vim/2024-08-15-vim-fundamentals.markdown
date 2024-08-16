@@ -1,8 +1,9 @@
 ---
 layout: post
 title: "Vim Fundamentals"
-date:   2024-08-15 15:34:43 -0400
-category: "vim"
+date: 2024-08-15 20:07:27 -0400
+categories: "vim"
+author: "Chandler Scott"
 ---
 
 # Table of Contents

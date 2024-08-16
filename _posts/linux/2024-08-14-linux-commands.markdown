@@ -2,7 +2,8 @@
 layout: post
 title:  "Linux Commands"
 date:   2024-08-14 15:34:43 -0400
-category: "linux basics"
+category: "linux"
+tags: "basics"
 ---
 
 # Table of Contents
