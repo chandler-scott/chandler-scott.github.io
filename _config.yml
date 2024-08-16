@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Terminal Thoughts
+title: Chandler's Tech Notes
 email: chandler.scott.mail@gmail.com 
 description: >- # this means to ignore newlines until "baseurl:"
   Explore in-depth articles on computer science, Linux, networking, 
@@ -34,6 +34,9 @@ github_username: chandler-scott
 theme: minima
 plugins:
   - jekyll-feed
+
+feed:
+  path: /blog/feed.atom
 
 include: 
   - _pages
