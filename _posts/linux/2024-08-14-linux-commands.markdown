@@ -1,22 +1,27 @@
 ---
 layout: post
 title:  "Linux Commands"
-date:   2024-08-14 15:34:43 -0400
+date:   2024-08-18 15:34:43 -0400
 category: "linux"
 tags: "basics"
 ---
 
 # Table of Contents
 - [The Shell](#the-shell)
-    - [Terminal Emulators: Your Gateway to the Shell](#terminal-emulators-your-gateway-to-the-shell)
-    - [Getting Started with the Terminal](#getting-started-with-the-terminal)
-    - [Command History and Cursor Movement](#command-history-and-cursor-movement)
-    - [Trying Some Simple Commands](#trying-some-simple-commands)
-    - [Virtual Console: A Glimpse Behind the GUI](#virtual-console-a-glimpse-behind-the-gui)
-    - [Ending a Terminal Session](#ending-a-terminal-session)
+  - [Terminal Emulators: Your Gateway to the Shell](#terminal-emulators-your-gateway-to-the-shell)
+  - [Getting Started with the Terminal](#getting-started-with-the-terminal)
+  - [Command History and Cursor Movement](#command-history-and-cursor-movement)
+  - [Trying Some Simple Commands](#trying-some-simple-commands)
+  - [Virtual Console: A Glimpse Behind the GUI](#virtual-console-a-glimpse-behind-the-gui)
+  - [Ending a Terminal Session](#ending-a-terminal-session)
+- [Navigation](#navigation)
+  - [Understanding the File System Tree](#understanding-the-file-system-tree)
+  - [The Current Working Directory](#the-current-working-directory)
+  - [Listing the Contents of a Directory](#listing-the-contents-of-a-directory)
+  - [Changing the Current Working Directory](#changing-the-current-working-directory)
 - [Text Processing](#text-processing)
-    - [cat](#cat)
-    - [sort](#sort)
+  - [cat](#cat)
+  - [sort](#sort)
 
 ## The Shell
 When we talk about the command line in Linux, what we're really referring to is the shell. The shell is a powerful program that interprets the commands we type and passes them to the operating system to execute. Most Linux distributions come with a shell called `bash`, which stands for "bourne-again shell," a nod to its origins as an enhanced replacement for the original Unix shell, `sh`, created by Steve Bourne.
@@ -95,6 +100,91 @@ You can end a terminal session by closing the terminal window, entering the `exi
 ```bash
 chandler@linux:~$ exit
 ```
+
+## Navigation
+`pwd`: Print the name of the current working directory
+`cd`: Change directory
+`ls`: List directory contents
+
+### Understanding the File System Tree
+Linux has what is called a **hierarchical directory structure**. This is similar to how Windows organizes its files as they are organized in a *tree-like pattern* of directories (also called *folders*), which may contain files and other directories. The first directory in the file system is called the *root* directory and is denoted with a `/`. It looks like this:
+
+```bash
+/
+├── bin/
+├── boot/
+├── dev/
+├── etc/
+├── home/
+│   ├── user1/
+│   └── user2/
+├── lib/
+├── media/
+├── opt/
+├── proc/
+├── root/
+├── sbin/
+├── sys/
+├── tmp/
+├── usr/
+└── var/
+
+```
+
+Unlike windows, Unix-like systems such as Linux always have a single file system tree, regardless of the number of attached drives or storage devices.
+
+### The Current Working Directory
+The file system can be visualized as an upside-down tree with directories as nodes. Standing in the middle represents being in the current working directory, where you can see files, the path to the parent directory, and any subdirectories. Use the `pwd` (print working directory) command to display your current location.
+
+```bash
+chandler@linux:~$ pwd
+/home/chandler
+```
+
+When you first log in (or start a terminal emulator session), our current working direetory is st to our *home* directory. Each user is given its own home directory, and **it is the only place a regular user is allowed to write files**.
+
+### Listing the Contents of a Directory
+To list the files and directories in the current working directory, use the `ls` command.
+
+```bash
+chandler@linux:~$ ls
+Desktop  Documents  Music  Pictures  Public  Templates  Videos
+```
+We can use `ls` to list the contents of any direcotry, not just the current working directory, and there are other interesting things it can do. We'll cover that shortly.
+
+
+### Changing the Current Working Directory
+To change your working directory in the file system, use the `cd` command followed by the pathname of the desired directory. You can use absolute or relative pathnames.
+
+#### Absolute Pathnames
+- Start from the root directory (`/`) and follow the path to the target directory.
+- Example:
+```bash
+chandler@linux:~$ cd /usr/bin
+chandler@linux:~$ pwd
+/usr/bin
+chandler@linux:~$ ls 
+...Listing of many, many files ...
+```
+
+#### Relative Pathnames
+- Start from the current working directory
+- Special notations:
+  - `.` (dot): Refers to the current directory.
+  - `..` (dot dot): Refers to parent directory
+- Example to move from `/usr/bin` to `/usr`:
+```bash
+chandler@linux:~$ cd ..
+chandler@linux:~$ pwd
+/usr
+```
+- Example to move from `/usr` to `/usr/bin`:
+```bash
+chandler@linux:~$ cd bin
+chandler@linux:~$ pwd
+/usr/bin
+```
+- The `./` notation is *optional* and *implied*, so `cd bin` works the same as `cd ./bin`.
 
 ## Text Processing 
 `cat`: Concatenate files and print on the standard output\
