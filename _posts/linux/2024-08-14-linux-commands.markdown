@@ -186,6 +186,12 @@ chandler@linux:~$ pwd
 ```
 - The `./` notation is *optional* and *implied*, so `cd bin` works the same as `cd ./bin`.
 
+## Exploring the System
+`ls`: List directory contents
+`file`: Determne file type
+`less`: View file contents
+
+
 ## Text Processing 
 `cat`: Concatenate files and print on the standard output\
 `sort`: Sort lines of text files\
